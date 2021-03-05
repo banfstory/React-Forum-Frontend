@@ -1,0 +1,11 @@
+#autocomplete {
+  width: inherit;
+  background-color: white;
+  border: 1px solid #f8f9fa;
+  position: fixed;
+  -webkit-box-shadow: 2px 4px 10px #888888;
+          box-shadow: 2px 4px 10px #888888;
+  border-radius: 1px;
+  top: 57px;
+}
+/*# sourceMappingURL=autoSearch.css.map */

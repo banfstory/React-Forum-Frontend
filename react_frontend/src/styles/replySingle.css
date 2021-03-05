@@ -1,0 +1,76 @@
+.reply-item {
+  position: relative;
+}
+
+.reply-item .reply-header-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.reply-item .reply-header-container .reply-header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reply-item .reply-header-container .reply-header .reply-header-data {
+  margin-left: 0.5rem;
+}
+
+.reply-item .reply-header-container .reply-header .reply-header-data span:nth-of-type(1) {
+  font-size: 0.8rem;
+}
+
+.reply-item .reply-header-container .reply-header .reply-header-data span:nth-of-type(2) {
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+}
+
+.reply-item .reply-header-container .reply-header a {
+  text-decoration: none;
+  color: black;
+}
+
+.reply-item .reply-header-container .reply-header a:hover {
+  text-decoration: underline;
+}
+
+.reply-item .reply-header-container .vertical-dots:after {
+  font-size: 1.2rem;
+}
+
+.reply-item .comment-reply-popup-g textarea {
+  font-size: 0.9rem;
+}
+
+.reply-item .reply-comment-buttons-g button {
+  font-size: 0.8rem;
+}
+
+.reply-item .reply-tool {
+  -webkit-transform: translate(105%, 5%);
+          transform: translate(105%, 5%);
+  z-index: 1;
+}
+
+.reply-item p {
+  margin: 0.7rem 0;
+  margin-left: 2.4rem;
+  font-size: 0.8rem;
+}
+
+.reply-item img {
+  border-radius: 50%;
+}
+
+@media (max-width: 1199px) {
+  .reply-item .reply-tool {
+    -webkit-transform: translate(0%, 30%);
+            transform: translate(0%, 30%);
+  }
+}
+/*# sourceMappingURL=replySingle.css.map */

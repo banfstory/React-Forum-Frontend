@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,OAAO;EACd,gBAAgB,EAAE,KAAK;EACvB,MAAM,EAAE,iBAAiB;EACzB,QAAQ,EAAE,KAAK;EACf,UAAU,ECJC,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,OAAO;EDK/B,aAAa,EAAE,GAAG;EAClB,GAAG,EAAE,IAAI;CACV",
+    "sources": [
+        "../scss/autoSearch.scss",
+        "../scss/_colorVar.scss"
+    ],
+    "names": [],
+    "file": "autoSearch.css"
+}

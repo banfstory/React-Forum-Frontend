@@ -1,0 +1,20 @@
+
+#home {
+  .post-container-g {
+    .post-content-g h1 {
+      margin-left: 1rem;
+    }
+    
+    .post-header-details {
+      span {
+        margin-left: 1rem;
+        font-size: 0.8rem;
+      }
+  
+      > a {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

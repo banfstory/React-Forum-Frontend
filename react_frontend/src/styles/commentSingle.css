@@ -1,0 +1,95 @@
+.comment-item {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.comment-item .comment-tool {
+  -webkit-transform: translate(105%, 5%);
+          transform: translate(105%, 5%);
+  z-index: 1;
+}
+
+.comment-item .comment-details {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.comment-item .comment-details .comment-header-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header .comment-header-data {
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header .comment-header-data > span:nth-of-type(1) {
+  font-size: 0.9rem;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header .comment-header-data > span:nth-of-type(2) {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header img {
+  border-radius: 50%;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header a {
+  text-decoration: none;
+  color: black;
+}
+
+.comment-item .comment-details .comment-header-container .comment-header a:hover {
+  text-decoration: underline;
+}
+
+.comment-item .comment-details p {
+  font-size: 0.9rem;
+  margin: 0.8rem 0;
+}
+
+.comment-item .comment-details .vertical-dots:after {
+  font-size: 1.3rem;
+}
+
+.comment-item .comment-footer > div:first-of-type {
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.comment-item .reply-display {
+  font-size: 0.9rem;
+  color: #0b346e;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.comment-item .replys-list {
+  margin: 0 1.5rem;
+}
+
+@media (max-width: 1199px) {
+  .comment-item .comment-tool {
+    -webkit-transform: translate(0%, 30%);
+            transform: translate(0%, 30%);
+  }
+}
+/*# sourceMappingURL=commentSingle.css.map */

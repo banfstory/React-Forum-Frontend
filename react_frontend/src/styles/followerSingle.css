@@ -1,0 +1,27 @@
+.follow-single {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+}
+
+.follow-single img {
+  border-radius: 50%;
+}
+
+.follow-single span {
+  line-height: 35px;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.follow-single:hover {
+  background: #f8f9fa;
+}
+
+@media (max-width: 992px) {
+  .follow-single > span {
+    display: none;
+  }
+}
+/*# sourceMappingURL=followerSingle.css.map */

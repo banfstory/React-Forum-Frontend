@@ -1,0 +1,34 @@
+@import './colorVar';
+
+.follow-single {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+
+  img {
+    border-radius: 50%; 
+  }
+
+  span {
+    line-height: 35px;
+    margin-left: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    background: $hover-link;
+  }
+}
+
+
+
+@media (max-width: 992px) {
+  .follow-single > span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+}

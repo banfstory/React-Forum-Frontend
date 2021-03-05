@@ -1,0 +1,22 @@
+#search-result {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  
+  .search-container {
+    margin-top: 1rem;
+    width: 800px;
+
+    .search-content {
+      border: 1px solid #ced4da;
+      border-radius: 3px;
+      background:#fff;
+      padding: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+    }
+  }
+}

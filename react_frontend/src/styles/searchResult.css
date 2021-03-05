@@ -1,0 +1,27 @@
+#search-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#search-result .search-container {
+  margin-top: 1rem;
+  width: 800px;
+}
+
+#search-result .search-container .search-content {
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  background: #fff;
+  padding: 2rem;
+}
+
+#search-result .search-container h2 {
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+/*# sourceMappingURL=searchResult.css.map */

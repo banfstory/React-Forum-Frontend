@@ -1,0 +1,14 @@
+#home .post-container-g .post-content-g h1 {
+  margin-left: 1rem;
+}
+
+#home .post-container-g .post-header-details span {
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+#home .post-container-g .post-header-details > a {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+/*# sourceMappingURL=home.css.map */

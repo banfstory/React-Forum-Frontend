@@ -1,0 +1,11 @@
+@import './colorVar';
+
+#autocomplete {
+  width: inherit;
+  background-color: white;
+  border: 1px solid #f8f9fa;
+  position: fixed;
+  box-shadow: $shadow-box;
+  border-radius: 1px;
+  top: 57px;
+}

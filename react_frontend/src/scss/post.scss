@@ -1,0 +1,261 @@
+#forum-post {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: start;
+
+  .side-content-g { // forum about section
+    .side-forum-name {
+      align-items: center;
+      margin-bottom: 1rem;
+
+      img {
+        border-radius: 50%;   
+      }
+
+      span {
+        margin-left: 1rem;
+        line-height: 50px;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background-color: #fff;
+      border: 1px solid black;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 1rem;
+
+      &:hover {
+        background-color: rgb(17, 65, 133);
+        border: 1px solid rgb(17, 65, 133);
+        border: none;
+        color: white;
+      }
+    }
+  }
+}
+
+/* POST */
+#forum-post {
+  img {
+    border-radius: 50%;
+  }
+
+	.post-layout {
+    width: 750px;
+    margin-bottom: 5rem;
+
+    .post-main {
+      margin-top: 1rem;
+      background:#fff;
+      border: 1px solid #999;
+      border-radius: 4px;
+      padding: 1rem 2rem;
+    }
+    
+    .post-details {
+      border-bottom: 1px solid #999;
+      
+      .post-header {
+        align-items: center;
+
+        .post-header-data {
+          margin-left: 0.5rem;
+
+          a {
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          > a {
+            margin-left: 0.5rem;
+            font-weight: 600;  
+          }
+
+          > span {
+            &:nth-of-type(1) {
+              margin-left: 1rem;
+              font-size: 0.8rem;
+            }
+
+            &:nth-of-type(2) {
+              font-size: 0.8rem;
+              margin-left: 0.3rem; 
+            }
+          }
+        }
+      }
+
+      .post-content {
+        margin: 1rem 0 2rem;
+
+        div {
+          &:nth-of-type(1) {
+            font-weight: 600;
+          }
+
+          &:nth-of-type(2) {
+            font-size: 0.8rem;  
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          margin: 0.8rem 0;
+        }
+      }
+
+      .post-input {
+        padding-bottom: 3rem;
+        flex-direction: column;
+
+
+        .modify-post {
+          gap: 1rem;
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        button, a {
+          width: 100px;
+          margin: 0.5rem 0;
+          font-size: 0.9rem;
+          cursor: pointer;
+          background-color: rgb(17, 65, 133);
+          padding: 0.5rem 0;
+          border-radius: 3px; 
+          border: none;
+          color:white;
+          text-align: center;
+
+          &:hover {
+            background-color: rgb(11, 52, 110); 
+          }          
+        }
+        
+        textarea {
+          width: 100%;
+          display: block;
+          outline: 0;
+          font-size: 0.9rem;
+          padding: 0.5rem;
+          border-radius: 3px;
+          height: 60px;
+          resize: none;
+        }
+
+        > button {
+          align-self: flex-end;
+        }
+      }
+    }
+
+    .comments-list {
+      margin-top: 1rem;
+    }
+  }
+}
+
+/* Popup to add or update comments and replies - general layout */
+.comment-reply-popup-g {
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 0.5rem;
+    resize: none;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+  }
+
+  .reply-comment-buttons-g {
+    margin-bottom: 0.5rem;
+    align-self: flex-end;
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      width: 80px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background-color: rgb(17, 65, 133);
+      padding: 0.4rem 0;
+      border-radius: 3px; 
+      border: none;
+      color:white;
+
+      &:hover {
+        background-color: rgb(11, 52, 110);
+      }
+    }
+  }
+}
+
+// popup to delete and update comment or reply
+.dot-popup {
+  border-radius: 2px;
+  box-shadow: 2px 4px 10px #888888;
+  background: #fff;
+  width: 120px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* select: none will prevent popup from been highlighted by cursor */
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.dot-popup i {
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+  width: 20px;
+}
+
+.dot-popup div {
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dot-popup div:hover {
+  background: #f8f9fa;
+}
+
+@media (max-width: 1199px) {
+
+}
+ 
+@media (max-width: 992px) {
+
+}
+ 
+@media (max-width: 768px) {
+  #forum-post {
+    margin: 0 0.5rem;
+    .post-layout {
+      .post-main {
+        padding: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,270 @@
+#forum-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+#forum-post .side-content-g .side-forum-name {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+#forum-post .side-content-g .side-forum-name img {
+  border-radius: 50%;
+}
+
+#forum-post .side-content-g .side-forum-name span {
+  margin-left: 1rem;
+  line-height: 50px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#forum-post .side-content-g button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+#forum-post .side-content-g button:hover {
+  background-color: #114185;
+  border: 1px solid #114185;
+  border: none;
+  color: white;
+}
+
+/* POST */
+#forum-post img {
+  border-radius: 50%;
+}
+
+#forum-post .post-layout {
+  width: 750px;
+  margin-bottom: 5rem;
+}
+
+#forum-post .post-layout .post-main {
+  margin-top: 1rem;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+}
+
+#forum-post .post-layout .post-details {
+  border-bottom: 1px solid #999;
+}
+
+#forum-post .post-layout .post-details .post-header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data {
+  margin-left: 0.5rem;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data a {
+  text-decoration: none;
+  color: black;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data a:hover {
+  text-decoration: underline;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data > a {
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data > span:nth-of-type(1) {
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+#forum-post .post-layout .post-details .post-header .post-header-data > span:nth-of-type(2) {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+}
+
+#forum-post .post-layout .post-details .post-content {
+  margin: 1rem 0 2rem;
+}
+
+#forum-post .post-layout .post-details .post-content div:nth-of-type(1) {
+  font-weight: 600;
+}
+
+#forum-post .post-layout .post-details .post-content div:nth-of-type(2) {
+  font-size: 0.8rem;
+}
+
+#forum-post .post-layout .post-details .post-content p {
+  font-size: 0.9rem;
+  margin: 0.8rem 0;
+}
+
+#forum-post .post-layout .post-details .post-input {
+  padding-bottom: 3rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#forum-post .post-layout .post-details .post-input .modify-post {
+  gap: 1rem;
+}
+
+#forum-post .post-layout .post-details .post-input .modify-post a {
+  text-decoration: none;
+}
+
+#forum-post .post-layout .post-details .post-input button, #forum-post .post-layout .post-details .post-input a {
+  width: 100px;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #114185;
+  padding: 0.5rem 0;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-align: center;
+}
+
+#forum-post .post-layout .post-details .post-input button:hover, #forum-post .post-layout .post-details .post-input a:hover {
+  background-color: #0b346e;
+}
+
+#forum-post .post-layout .post-details .post-input textarea {
+  width: 100%;
+  display: block;
+  outline: 0;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  height: 60px;
+  resize: none;
+}
+
+#forum-post .post-layout .post-details .post-input > button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#forum-post .post-layout .comments-list {
+  margin-top: 1rem;
+}
+
+/* Popup to add or update comments and replies - general layout */
+.comment-reply-popup-g {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.comment-reply-popup-g textarea {
+  width: 100%;
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+  resize: none;
+  height: 50px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.comment-reply-popup-g .reply-comment-buttons-g {
+  margin-bottom: 0.5rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.comment-reply-popup-g .reply-comment-buttons-g button {
+  width: 80px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #114185;
+  padding: 0.4rem 0;
+  border-radius: 3px;
+  border: none;
+  color: white;
+}
+
+.comment-reply-popup-g .reply-comment-buttons-g button:hover {
+  background-color: #0b346e;
+}
+
+.dot-popup {
+  border-radius: 2px;
+  -webkit-box-shadow: 2px 4px 10px #888888;
+          box-shadow: 2px 4px 10px #888888;
+  background: #fff;
+  width: 120px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* select: none will prevent popup from been highlighted by cursor */
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+
+.dot-popup i {
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+  width: 20px;
+}
+
+.dot-popup div {
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dot-popup div:hover {
+  background: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  #forum-post {
+    margin: 0 0.5rem;
+  }
+  #forum-post .post-layout .post-main {
+    padding: 1rem;
+  }
+}
+/*# sourceMappingURL=post.css.map */

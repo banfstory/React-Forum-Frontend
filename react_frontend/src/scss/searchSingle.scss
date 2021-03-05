@@ -1,0 +1,32 @@
+.search-item {
+	padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  justify-content: space-between;
+
+  .search-details {
+    align-items: center;
+    
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .search-stats {
+    gap: 1.5rem;
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    margin-right: 0.5rem;	
+  }
+
+  &:hover {
+    background: #f8f9fa;
+  }
+}

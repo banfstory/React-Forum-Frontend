@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,cAAc,CAAC;EACb,eAAe,EAAE,IAAI;EACrB,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,MAAM;CAgBhB;;AAnBD,AAKE,cALY,CAKZ,GAAG,CAAC;EACF,aAAa,EAAE,GAAG;CACnB;;AAPH,AASE,cATY,CASZ,IAAI,CAAC;EACH,WAAW,EAAE,IAAI;EACjB,WAAW,EAAE,MAAM;EACnB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,MAAM;CAClB;;AAdH,AAgBE,cAhBY,AAgBX,MAAM,CAAC;EACN,UAAU,ECfD,OAAO;CDgBjB;;AAKH,MAAM,EAAE,SAAS,EAAE,KAAK;EACtB,AAAA,cAAc,GAAG,IAAI,CAAC;IACpB,OAAO,EAAE,IAAI;GACd",
+    "sources": [
+        "../scss/followerSingle.scss",
+        "../scss/_colorVar.scss"
+    ],
+    "names": [],
+    "file": "followerSingle.css"
+}

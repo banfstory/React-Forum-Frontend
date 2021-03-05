@@ -1,0 +1,55 @@
+.post-item {
+  background-color: #fff;
+	border: 1px solid #999;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem;
+	border-radius: 3px;
+  cursor: pointer;	
+  
+  .item-header {
+    align-items: center;
+
+    .item-header-data {
+      margin-left: 0.5rem;
+
+      .post-time {
+        font-size: 0.8rem;
+        margin-left: 0.3rem;
+      }      
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &:hover {
+    border: 1px solid black;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .item-body {
+    margin-top: 0.8rem;
+
+    p {
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    div:nth-of-type(1) {
+      font-weight: 600;
+    }
+
+    div:nth-of-type(2) {
+      font-size: 0.7rem;
+    }
+  }
+}

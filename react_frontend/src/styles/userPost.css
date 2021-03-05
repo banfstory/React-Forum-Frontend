@@ -1,0 +1,54 @@
+#user-posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#user-posts .user-header {
+  background: #f8f9fa;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#user-posts .user-header .user-header-container {
+  width: 650px;
+  padding: 1rem 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#user-posts .user-header .user-header-container img {
+  border-radius: 50%;
+}
+
+#user-posts .user-header .user-header-container .user-data {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin-left: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#user-posts .user-header .user-header-container .user-data span:nth-of-type(1) {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+#user-posts .user-header .user-header-container .user-data span:nth-of-type(2) {
+  font-size: 1rem;
+}
+
+#user-posts .post-header-details > a {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+/*# sourceMappingURL=userPost.css.map */
