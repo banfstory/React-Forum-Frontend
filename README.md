@@ -17,6 +17,6 @@ If you want to change the port number for the localhost, go to the following pat
 
 REACT FRONTEND INSTRUCTIONS: To run the local server of the React website do the following (instructions for windows OS only), start with going into command prompt:
 
-1. Go to the 'vue_frontend' folder
-2. Enter 'npm install' to install all the modules within this folder (check if the folder 'node_modules' exist within the 'vue_frontend' folder)
-3. Enter 'npm run serve -- --port 8080' to run the local server on port 8080 (you can change the port number to whatever you want)
+1. Go to the 'react_frontend' folder
+2. Enter 'npm install' to install all the modules within this folder (check if the folder 'node_modules' exist within the 'react_frontend' folder)
+3. Enter 'npm start --port 8080' to run the local server on port 8080 (you can change the port number to whatever you want)
