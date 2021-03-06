@@ -13,9 +13,9 @@ To run the virtual environment do the following (instructions for windows OS onl
 3. Go to the following path: flask_api_env (folder) > flask_api (folder)
 4. Enter 'python run.py' to run the local server
 
-If you want to change the port number for the localhost, go to the following path: flask_api_env (folder) > flask_api (folder) > run.py . Look for the code 'app.run(debug=True, port=5000)' on line 14 and change the 'port' parameter (localhost uses port number 5000 by default) WARNING: If you change the port number for the FLASK API port number, you will also need to change the api http request url with a different port number in order for the vue frontend to call the correct API server. To change this, go to the path: vue_frontend (folder) > src (folder) > main.js. Look for the code 'domain_name_api: 'http://127.0.0.1:5000/api/' on line 13 and change the url's port to reflect the changes made in the port for the API server.
+If you want to change the port number for the localhost, go to the following path: flask_api_env (folder) > flask_api (folder) > run.py . Look for the code 'app.run(debug=True, port=5000)' on line 14 and change the 'port' parameter (localhost uses port number 5000 by default) WARNING: If you change the port number for the FLASK API port number, you will also need to change the api http request url with a different port number in order for the react frontend to call the correct API server. To change this, go to the path: react_frontend (folder) > src (folder) > mixin (folder) > default_API_URL.js. Look for the code 'const REST_API_URL = 'http://127.0.0.1:5000/api/' on line 1 and change the url's port to reflect the changes made in the port for the API server.
 
-VUE JS FRONTEND INSTRUCTIONS: To run the local server of the Vue js website do the following (instructions for windows OS only), start with going into command prompt:
+REACT FRONTEND INSTRUCTIONS: To run the local server of the React website do the following (instructions for windows OS only), start with going into command prompt:
 
 1. Go to the 'vue_frontend' folder
 2. Enter 'npm install' to install all the modules within this folder (check if the folder 'node_modules' exist within the 'vue_frontend' folder)
