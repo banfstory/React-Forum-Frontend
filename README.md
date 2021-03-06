@@ -1,8 +1,8 @@
 # React-Forum-Frontend
 
-The Single Page Application (SPA) website allows users to create their own forums which gives a place for other users to create post which is built using Vuejs for the frontend and Flask for the REST API backend which ensures quicker load times as only certain components of the page is updated.
+The Single Page Application (SPA) website allows users to create their own forums which gives a place for other users to create post which is built using React for the frontend and Flask for the REST API backend which ensures quicker load times as only certain components of the page is updated.
 
-For this website, it is required that two local servers are running at the same time, one will be used for the Restful Flask API and the other will be used for Vue frontend.
+For this website, it is required that two local servers are running at the same time, one will be used for the Restful Flask API and the other will be used for React frontend.
 
 FLASK RESTFUL API INSTRUCTIONS: To run the Flask API, it needs to run on a local server and it will be running the application from a virtual environment so that all packages will be already pre-installed within the whole folder itself.
 
