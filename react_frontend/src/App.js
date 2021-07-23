@@ -4,16 +4,15 @@ import Layout from './components/Layout';
 import axios from 'axios';
 import jwtdecode from "jwt-decode";
 import { loadingReducer } from './mixin/reducerMixin';
+import REST_API_URL from './mixin/default_API_URL';
 import { CSSTransition } from 'react-transition-group';
 
 export const UserContext = React.createContext();
 export const TokenContext = React.createContext();
 export const FollowerContext = React.createContext();
-export const REST_API_URL = React.createContext();
 
 function App() {
   const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
-  const rest_api_url = 'http://127.0.0.1:5000/api/';
   const [user, setUser] = useState({});
   const [token, setToken] = useState('');
   const [follower, setFollower] = useState([]);
@@ -37,8 +36,8 @@ function App() {
       let arr_token = document.cookie.split(';').map(cookie => cookie.split('='));
       const token = arr_token[0][1];
       let user = jwtdecode(token);
-      const getUser = axios.get(`${rest_api_url}user?id=${user.id}`);
-      const getFollowers = axios.get(`${rest_api_url}user_followers`, { headers: { 'x-access-token' : token } });
+      const getUser = axios.get(`${REST_API_URL}user?id=${user.id}`);
+      const getFollowers = axios.get(`${REST_API_URL}user_followers`, { headers: { 'x-access-token' : token } });
       axios.all([getUser, getFollowers]).then(axios.spread((...response) => {
         const userResponse = response[0];
         setUser(userResponse.data.user); 
