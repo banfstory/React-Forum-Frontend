@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
-import  { Redirect } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 function Forbidden() {
+    const history = useHistory();
+
     useEffect(() => {
 		document.title = 'Forbidden';
 	}, []);
 
 	function toHomePage() {
-		<Redirect to='/'/>
+		history.push('/');
 	}
 
     return (
