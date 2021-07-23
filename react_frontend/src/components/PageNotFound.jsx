@@ -1,9 +1,14 @@
 import React, {useEffect} from 'react';
+import  { Redirect } from 'react-router-dom'
 
 function PageNotFound() {
 	useEffect(() => {
 		document.title = 'Page Not Found';
 	}, []);
+
+	function toHomePage() {
+		<Redirect to='/'/>
+	}
 
 	return (
 		<div id="error_page">
@@ -11,7 +16,7 @@ function PageNotFound() {
 				<h1> 404 </h1>
 				<h2> Page Not Found </h2>
 				<p> Sorry, the page you are looking for does not exist. </p>
-				<button> Return to Homepage </button>
+				<button onClick={toHomePage}> Return to Homepage </button>
 			</div>
 		</div>
 	);

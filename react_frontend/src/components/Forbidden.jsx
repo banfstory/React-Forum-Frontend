@@ -1,9 +1,14 @@
 import React, {useEffect} from 'react';
+import  { Redirect } from 'react-router-dom'
 
 function Forbidden() {
     useEffect(() => {
 		document.title = 'Forbidden';
 	}, []);
+
+	function toHomePage() {
+		<Redirect to='/'/>
+	}
 
     return (
         <div id="error_page">
@@ -11,7 +16,7 @@ function Forbidden() {
                 <h1> 403 </h1>
                 <h2> Forbidden </h2>
                 <p> You don't have permission to access this page. </p>
-                <button> Return to Homepage </button>
+                <button onClick={toHomePage}> Return to Homepage </button>
             </div>
         </div>
     );
