@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import SearchSingle from './SearchSingle';
 import REST_API_URL from '../mixin/default_API_URL';
 import { Link } from 'react-router-dom';
+import { loadingReducer } from '../mixin/reducerMixin';
+import RedirectPageNotFound from './RedirectPageNotFound';
+import Loader from './Loader';
 import axios from 'axios';
 import '../styles/searchResult.css';
 
 function Home(props) {
-	const [isLoading, setLoading] = useState(true);
+	const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
 	const [forums, setForums] = useState([]);
   const [details, setDetails] = useState({});
+  const [exist, setExist] = useState(true);
   const query = new URLSearchParams(props.location.search);
 
   function search_results() {
@@ -17,15 +21,22 @@ function Home(props) {
     axios.get(`${REST_API_URL}forums?query=${q}&page=${page}`).then(response => {
       setForums(response.data.forums);
       setDetails(response.data.details);
-      setLoading(false);
+    }).catch(() => {
+      setExist(false);
+    }).finally(() => {
+      loadDispatch('loaded');
     });
   }
 
   useEffect(() => {
+    document.title = `Search Results: ${query.get('q')}`;
     search_results();
   }, [query.get('q'), query.get('page')]);
 
-	if(!isLoading) {
+	if(!IsLoading) {
+    if(!exist) {
+			return <RedirectPageNotFound/>;
+		}
 		const search_single = forums.map(forum => {
 			return (
 			  <SearchSingle key={forum.id} forum={forum}/>
@@ -53,7 +64,7 @@ function Home(props) {
       </div>
 		);
 	} else {
-		return <React.Fragment> Loading </React.Fragment>;
+		return <Loader/>;
 	}
 }
 

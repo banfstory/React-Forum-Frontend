@@ -20,7 +20,7 @@ function time_ago(date) {
     return `${Math.floor(diff_time / 7)} weeks ago`;
   }
   diff_time /= 30
-  if(diff_time < 365) {
+  if(diff_time < 13) {
     return `${Math.floor(diff_time)} months ago`;
   }
   return `${Math.floor(diff_time / 12)} years ago`;

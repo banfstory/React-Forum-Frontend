@@ -13,6 +13,8 @@ import ForumUpdate from './UpdateForum';
 import Post from './Post';
 import UpdatePost from './UpdatePost';
 import SearchResult from './SearchResult';
+import PageNotFound from './PageNotFound';
+import Forbidden from './Forbidden';
 
 function Routes() {
   return (
@@ -28,6 +30,15 @@ function Routes() {
       <Route path="/post/:id" exact component={Post}/>
       <Route path="/update-post/:id" exact component={UpdatePost}/>
       <Route path="/search" exact component={SearchResult}/>
+      <Route path="/forbidden">
+        <Forbidden/>
+      </Route>
+      <Route path="/notfound">
+        <PageNotFound/>
+      </Route>
+      <Route path="*">
+        <PageNotFound/>
+      </Route>
     </Switch>
   );
 }

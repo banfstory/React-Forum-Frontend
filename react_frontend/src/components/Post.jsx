@@ -9,10 +9,14 @@ import axios from 'axios';
 import { loadingReducer, forumReducer, postReducer } from '../mixin/reducerMixin';
 import { normal_date_format, time_ago } from '../mixin/dateMixin';
 import { displayFlashMessage } from '../mixin/flashMixin';
+import RedirectPageNotFound from './RedirectPageNotFound';
+import { error_class } from '../mixin/validationMixin';
 import { FlashContext } from './Layout';
+import Loader from './Loader';
 import '../styles/post.css';
 
 function Post(props) {
+  const errors_default = { content_empty: false, content_chars_exceed: false };
   const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
   const history = useHistory();
   const [content, setContent] = useState('');
@@ -20,6 +24,7 @@ function Post(props) {
   const [post, postDispatch] = useReducer(postReducer, {});
   const [comments, setComments] = useState([]);
   const [details, setDetails] = useState({});
+  const [exist, setExist] = useState(true);
   const [IsFollowed, setIsFollowed] = useState(false);
   const { user } = useContext(UserContext);
   const { token } = useContext(TokenContext);
@@ -28,6 +33,7 @@ function Post(props) {
   const [componentState, setComponentState] = useState({});
   const [leave, setLeave] = useState('JOINED');
   const { setFlash, setFlashContent } = useContext(FlashContext);
+  const [errors, setErrors] = useState({ ...errors_default });
   const query = new URLSearchParams(props.location.search);
 
   function post_details() {
@@ -48,8 +54,8 @@ function Post(props) {
           setIsFollowed(response.data.follow ? true : false);
         });
       }
-    })).catch(err => {
-      console.log(err);
+    })).catch(() => {
+      setExist(false);
     }).finally(() => {
       loadDispatch('loaded');
     });
@@ -63,19 +69,25 @@ function Post(props) {
   }
 
   function add_comment() {
-    let _content = content.trim()
-    axios.post(`${REST_API_URL}comment`, {'content' : _content, 'post_id' : post.id}, { headers: { 'x-access-token' : token} }).then((response) => {
-      postDispatch({ type: 'increment-comments' });
-      setContent('');
-      let newComments = [response.data.comment, ...comments];
-      if(newComments.length > 10) {
-        newComments.pop();
-      }
-      setComments(newComments);
-      displayFlashMessage('Commented on Post', setFlash, setFlashContent);
-    }).catch(err => {
-      console.log(err);
-    });
+    let _content = content.trim();
+    if(_content.length === 0) {
+      setErrors(prev => ({...prev, content_empty: true}));
+    } else if(_content.length > 20000) {
+      setErrors(prev => ({...prev, content_chars_exceed: true}));
+    } else {
+      axios.post(`${REST_API_URL}comment`, {'content' : _content, 'post_id' : post.id}, { headers: { 'x-access-token' : token} }).then((response) => {
+        postDispatch({ type: 'increment-comments' });
+        setContent('');
+        let newComments = [response.data.comment, ...comments];
+        if(newComments.length > 10) {
+          newComments.pop();
+        }
+        setComments(newComments);
+        displayFlashMessage('Commented on Post', setFlash, setFlashContent);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
   }
 
   function delete_comment(user_comment) {
@@ -138,6 +150,7 @@ function Post(props) {
   }
 
   useEffect(() => {
+    document.title = `Posts: ${forum.name}`;
     post_details();
     document.addEventListener('click', toggleDotPopup);
     return () => {
@@ -145,7 +158,14 @@ function Post(props) {
     };
   }, [props.match.params.id, query.get('page'), componentState, componentRefs]); // if component state or refs is changed, rerender event
 
+  useEffect(() => {
+    document.title = `Posts: ${forum.name}`;
+  }, [forum]);
+
 	if(!IsLoading) {
+    if(!exist) {
+			return <RedirectPageNotFound/>;
+		}
 		const comment_single = comments.map(comment => {
 			return (
         <CommentSingle key={comment.id} comment={comment} delete_comment={delete_comment} processPopup={processPopup}/>
@@ -185,9 +205,13 @@ function Post(props) {
      </div>
     ) : '';
 
+    const content_error = errors.content_empty ? <div className={error_class}>Content cannot be empty</div> :
+                          errors.content_chars_exceed ? <div className={error_class}>Content field must not exceed 20000 characters</div> : '';
+
     const CommentPostForm = token ? (
       <div className="post-input flex">
         {auth_modify_post}
+        {content_error}
         <textarea placeholder="Add a comment" value={content} onChange={ e => setContent(e.target.value) }> </textarea>
         <button onClick={ add_comment }> Comment </button>
       </div>
@@ -195,7 +219,6 @@ function Post(props) {
 
 		return (
       <div id="forum-post">
-      
         <div className="post-layout">
           <div className="post-main">
             <div className="post-container">
@@ -253,7 +276,7 @@ function Post(props) {
       </div>
 		);
 	} else {
-		return <React.Fragment> Loading </React.Fragment>;
+		return <Loader/>;
 	}
 }
 

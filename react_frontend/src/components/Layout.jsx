@@ -5,8 +5,6 @@ import Routes from './Routes';
 import Header from './Header';
 import UserLayout from './UserLayout';
 import GuestLayout from './GuestLayout';
-import axios from 'axios';
-import REST_API_URL from '../mixin/default_API_URL';
 import { popupReducer, loadingReducer } from '../mixin/reducerMixin';
 import '../styles/app.css';
 
@@ -53,7 +51,7 @@ function Layout() {
       <LayoutContext.Provider value={ passContext }>
         { layout }
       </LayoutContext.Provider>
-      <div class="main-content">
+      <div className="main-content">
         <Routes/>
       </div>
     </FlashContext.Provider>

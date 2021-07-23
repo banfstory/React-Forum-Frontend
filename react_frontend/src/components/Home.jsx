@@ -4,12 +4,15 @@ import { getForumImage } from '../mixin/getImage';
 import REST_API_URL from '../mixin/default_API_URL';
 import { Link } from 'react-router-dom';
 import { loadingReducer } from '../mixin/reducerMixin';
+import RedirectPageNotFound from './RedirectPageNotFound';
+import Loader from './Loader';
 import axios from 'axios';
 import '../styles/home.css';
 
 function Home(props) {
 	const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
 	const [posts, setPosts] = useState([]);
+	const [exist, setExist] = useState(true);
 	const [details, setDetails] = useState({});
 	const query = new URLSearchParams(props.location.search);
 
@@ -17,20 +20,24 @@ function Home(props) {
 		loadDispatch('loading');
     let page = query.get('page') ? query.get('page') : 1;
     axios.get(`${REST_API_URL}posts?page=${page}`).then(response => {
-			setPosts(response.data.posts);
-			setDetails(response.data.details);
+		setPosts(response.data.posts);
+		setDetails(response.data.details);
     }).catch(() => {
-      console.log('invalid posts');
+      setExist(false);
     }).finally(() => {
-			loadDispatch('loaded');
-		})
+		loadDispatch('loaded');
+	})
   }
 
   useEffect(() => {
+	document.title = 'Flask Forum';
     posts_results();
   }, [query.get('page')]);
 
 	if(!IsLoading) {
+		if(!exist) {
+			return <RedirectPageNotFound/>;
+		}
 		const post_single = posts.map(post => {
 			return (
 			<PostSingle key={post.id} post={post}>
@@ -66,7 +73,7 @@ function Home(props) {
 			</div>
 		);
 	} else {
-		return <React.Fragment> Loading </React.Fragment>;
+		return <Loader/>;
 	}
 }
 

@@ -8,10 +8,12 @@ import axios from 'axios';
 import { popupReducer } from '../mixin/reducerMixin';
 import { time_ago } from '../mixin/dateMixin';
 import { displayFlashMessage } from '../mixin/flashMixin';
+import { error_class } from '../mixin/validationMixin';
 import { FlashContext } from './Layout';
 import '../styles/replySingle.css';
 
 function ReplySingle(props) {
+  const errors_default = { content_empty: false, content_chars_exceed: false };
   const tripleDotRef =  useRef(null);
   const popupRef =  useRef(null);
   const delete_reply = props.delete_reply;
@@ -22,18 +24,25 @@ function ReplySingle(props) {
   const [display_reply, displayReplyDispatch] = useReducer(popupReducer, false);
   const [toggleDot, toggleDotDispatch] = useReducer(popupReducer, false);
   const [content, setContent] = useState('');
+  const [errors, setErrors] = useState({ ...errors_default });
   const { setFlash, setFlashContent } = useContext(FlashContext);
   const processPopup = props.processPopup;
 
   function update_reply() {
-    let update_content = content.trim();
-    axios.put(`${REST_API_URL}reply/${reply.id}`, { 'content' : update_content }, { headers: { 'x-access-token' : token } }).then(() => {
-      reply.content = update_content; // this will ensure the object reference remain the same so its possible to delete it indirectly
-      setReply(reply);
-      setContent('');
-      displayReplyDispatch('hide');
-      displayFlashMessage('Reply Updated', setFlash, setFlashContent);
-    });
+    let _content = content.trim();
+    if(_content.length === 0) {
+      setErrors(prev => ({...prev, content_empty: true}));
+    } else if(_content.length > 20000) {
+      setErrors(prev => ({...prev, content_chars_exceed: true}));
+    } else {
+      axios.put(`${REST_API_URL}reply/${reply.id}`, { 'content' : _content }, { headers: { 'x-access-token' : token } }).then(() => {
+        reply.content = _content; // this will ensure the object reference remain the same so its possible to delete it indirectly
+        setReply(reply);
+        setContent('');
+        displayReplyDispatch('hide');
+        displayFlashMessage('Reply Updated', setFlash, setFlashContent);
+      });
+    }
   }
 
   function show_update_reply() {
@@ -68,9 +77,12 @@ function ReplySingle(props) {
   
   const toggle_popup = popup ? popup_reply : '';
   
+  const content_error = errors.content_empty ? <div className={error_class}>Content cannot be empty</div> :
+                        errors.content_chars_exceed ? <div className={error_class}>Content field must not exceed 20000 characters</div> : '';
 
   const reply_form = (
     <div className="comment-reply-popup-g">
+      {content_error}
       <textarea placeholder="Update reply" value={content} onChange={ e => setContent(e.target.value) }/>
       <div className="reply-comment-buttons-g">
         <button onClick={update_reply}> Update </button>

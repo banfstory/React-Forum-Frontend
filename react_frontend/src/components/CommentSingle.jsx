@@ -8,10 +8,12 @@ import axios from 'axios';
 import { loadingReducer, popupReducer, commentReducer } from '../mixin/reducerMixin';
 import { time_ago } from '../mixin/dateMixin';
 import { displayFlashMessage } from '../mixin/flashMixin';
+import { error_class } from '../mixin/validationMixin';
 import { FlashContext } from './Layout';
 import '../styles/commentSingle.css';
 
 function CommentSingle(props) {
+  const errors_default = { reply_content_empty: false, reply_content_chars_exceed: false, comment_content_empty: false, comment_content_chars_exceed: false };
   const tripleDotRef =  useRef(null);
   const popupRef =  useRef(null);
   const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
@@ -26,6 +28,7 @@ function CommentSingle(props) {
   const [display_reply_results, replyResultsDispatch] = useReducer(popupReducer, false);
   const [toggleDot, toggleDotDispatch] = useReducer(popupReducer, false);
   const [replys, setReplys] = useState([]);
+  const [errors, setErrors] = useState({ ...errors_default });
   const { setFlash, setFlashContent } = useContext(FlashContext);
   const processPopup = props.processPopup;
 
@@ -39,28 +42,39 @@ function CommentSingle(props) {
 
   function update_comment() {
     let content = input.comment.trim();
-    axios.put(`${REST_API_URL}comment/${comment.id}`, { 'content' : content }, { headers: { 'x-access-token' : token } }).then(() => {
-      // this will ensure the object reference remain the same so its possible to delete it indirectly
-      commentDispatch({ type: 'update-content', content: content })
-      setInput({...input, comment: ''});
-      displayCommentDispatch('hide');
-      displayFlashMessage('Comment Updated', setFlash, setFlashContent);
-    });
+    if(content.length === 0) {
+      setErrors(prev => ({...prev, comment_content_empty: true}));
+    } else if(content.length > 20000) {
+      setErrors(prev => ({...prev, comment_content_chars_exceed: true}));
+    } else {
+      axios.put(`${REST_API_URL}comment/${comment.id}`, { 'content' : content }, { headers: { 'x-access-token' : token } }).then(() => {
+        // this will ensure the object reference remain the same so its possible to delete it indirectly
+        commentDispatch({ type: 'update-content', content: content })
+        setInput({...input, comment: ''});
+        displayCommentDispatch('hide');
+        displayFlashMessage('Comment Updated', setFlash, setFlashContent);
+      });
+    }
   }
 
   function add_reply() {
     let content = input.reply.trim();
-    console.log(content);
-    axios.post(`${REST_API_URL}reply`, { 'content' : content, 'comment_id' : comment.id }, { headers: { 'x-access-token' : token } }).then((response) => {
-      commentDispatch({ type: 'increment-replys' });
-      setInput({...input, reply: ''});
-      let newReplys = [response.data.reply, ...replys];
-      setReplys(newReplys);
-      displayReplyDispatch('hide');
-      displayFlashMessage('Comment Replied', setFlash, setFlashContent);
-    }).catch(err => {
-      console.log(err);
-    });
+    if(content.length === 0) {
+      setErrors(prev => ({...prev, reply_content_empty: true}));
+    } else if(content.length > 20000) {
+      setErrors(prev => ({...prev, reply_content_chars_exceed: true}));
+    } else {
+      axios.post(`${REST_API_URL}reply`, { 'content' : content, 'comment_id' : comment.id }, { headers: { 'x-access-token' : token } }).then((response) => {
+        commentDispatch({ type: 'increment-replys' });
+        setInput({...input, reply: ''});
+        let newReplys = [response.data.reply, ...replys];
+        setReplys(newReplys);
+        displayReplyDispatch('hide');
+        displayFlashMessage('Comment Replied', setFlash, setFlashContent);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
   }
 
   function delete_reply(user_reply) {
@@ -99,8 +113,12 @@ function CommentSingle(props) {
   
   const toggle_popup = popup ? popup_comment : '';
 
+  const reply_content_error = errors.reply_content_empty ? <div className={error_class}>Content cannot be empty</div> :
+                              errors.reply_content_chars_exceed ? <div className={error_class}>Content field must not exceed 20000 characters</div> : '';  
+
   const reply_form = (
     <div className="comment-reply-popup-g">
+      {reply_content_error}
       <textarea placeholder="Add a reply" value={input.reply} onChange={e => setInput({...input, reply: e.target.value})}></textarea>
       <div className="reply-comment-buttons-g">
         <button onClick={add_reply}> Reply </button>
@@ -116,8 +134,12 @@ function CommentSingle(props) {
     :  <div onClick={() => replyResultsDispatch('show')} className="reply-display"> Show {comment.num_of_reply} replies </div>
   );
 
+  const comment_content_error = errors.comment_content_empty ? <div className={error_class}>Content cannot be empty</div> :
+                                errors.comment_content_chars_exceed ? <div className={error_class}>Content field must not exceed 20000 characters</div> : '';  
+
   const comment_form = (
     <div className="comment-reply-popup-g">
+      {comment_content_error}
       <textarea placeholder="Update comment" value={input.comment} onChange={e => setInput({...input, comment: e.target.value})}> </textarea>
       <div className="reply-comment-buttons-g">
         <button onClick={update_comment}> Update </button>
@@ -174,7 +196,7 @@ function CommentSingle(props) {
     </div>
 		);
 	} else {
-		return <React.Fragment> Loading </React.Fragment>;
+		return '';
 	}
 }
 

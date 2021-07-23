@@ -4,6 +4,8 @@ import { getUserImage, getForumImage } from '../mixin/getImage';
 import REST_API_URL from '../mixin/default_API_URL';
 import { Link } from 'react-router-dom';
 import { loadingReducer } from '../mixin/reducerMixin';
+import RedirectPageNotFound from './RedirectPageNotFound';
+import Loader from './Loader';
 import axios from 'axios';
 import '../styles/userPost.css';
 
@@ -12,6 +14,7 @@ function UserPost(props) {
 	const [owner, setOwner] = useState({});
 	const [posts, setPosts] = useState([]);
 	const [details, setDetails] = useState({});
+	const [exist, setExist] = useState(true);
 	const query = new URLSearchParams(props.location.search);
 
   function posts_results() {
@@ -26,17 +29,21 @@ function UserPost(props) {
 			setPosts(response.data.posts);
 			setDetails(response.data.details);
 		}).catch(() => {
-			console.log('invalid posts');
+			setExist(false);
 		}).finally(() => {
 			loadDispatch('loaded');
 		});
   }
 
   useEffect(() => {
-		posts_results();
+	document.title = `${props.match.params['username']}'s Posts`;
+	posts_results();
   }, [props.match.params.username, query.get('page')]);
 
 	if(!IsLoading) {
+		if(!exist) {
+			return <RedirectPageNotFound/>;
+		}
 		const post_single = posts.map(post => {
 			return (
 			<PostSingle key={post.id} post={post}>
@@ -80,7 +87,7 @@ function UserPost(props) {
 			</div>		
 		);
 	} else {
-		return <React.Fragment> Loading... </React.Fragment>;
+		return <Loader/>;
 	}
 }
 
