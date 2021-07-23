@@ -13,7 +13,7 @@ export const REST_API_URL = React.createContext();
 
 function App() {
   const [IsLoading, loadDispatch] = useReducer(loadingReducer, true);
-  const rest_api_url = 'http://172.105.190.62:8080/api/';
+  const rest_api_url = 'http://127.0.0.1:5000/api/';
   const [user, setUser] = useState({});
   const [token, setToken] = useState('');
   const [follower, setFollower] = useState([]);
