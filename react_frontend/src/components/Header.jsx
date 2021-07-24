@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useReducer } from 'react';
+import React, { useContext, useState, useReducer } from 'react';
 import { useHistory } from "react-router-dom";
 import AutoSearch from './AutoSearch';
 import { getUserImage } from '../mixin/getImage';
@@ -34,7 +34,7 @@ function Layout(props) {
   function auto_complete(val) {
     popupAutoDispatch('hide');
     setSearch(val);
-    if(val.trim().length == 0) {
+    if(val.trim().length === 0) {
       return;
     }
     axios.get(`${REST_API_URL}autocomplete?query=${val}`).then(response => {

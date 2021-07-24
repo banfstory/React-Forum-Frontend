@@ -1,6 +1,5 @@
 import React, { useState, useContext, useRef, useReducer } from 'react';
 import { UserContext, TokenContext } from '../App';
-import PostSingle from './PostSingle';
 import { getUserImage } from '../mixin/getImage';
 import REST_API_URL from '../mixin/default_API_URL';
 import { Link } from 'react-router-dom';
@@ -61,7 +60,7 @@ function ReplySingle(props) {
   const vertical_dot = toggleDot ? <div onClick={toggle_vert_dot} className="vertical-dots" ref={tripleDotRef}></div> : '';
 
   
-  const auth_dot_popup = token && reply.user.id == user.id ? (
+  const auth_dot_popup = token && reply.user.id === user.id ? (
     <React.Fragment>
       <div onClick={show_update_reply} className="flex"> <i className="far fa-edit"> </i> <span> Update </span> </div>
       <div onClick={() => {delete_reply(reply); popupDispatch('hide')}} className="flex"> <i className="fas fa-trash-alt"> </i> <span> Delete </span> </div>

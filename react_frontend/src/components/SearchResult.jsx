@@ -44,7 +44,7 @@ function Home(props) {
 		});
 
 		const pagination = details.paginate.map((page, index) => {
-      const pageActive = page == details.page ? 'page-active' : '';
+      const pageActive = page === details.page ? 'page-active' : '';
 			return (		
 				page ? <Link className={pageActive} to={`?q=${query.get('q')}&page=${page}`} key={index}>{page}</Link> : <span key={index}> ... </span>
 			);

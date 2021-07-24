@@ -31,7 +31,7 @@ function GuestLayout() {
   }, []);
 
   // switch between login and register forms
-  const LoginOrRegister = authForm == 'login' ? <Login setAuthForm={setAuthForm}/> : authForm == 'register' ? <Register setAuthForm={setAuthForm}/> : ''; 
+  const LoginOrRegister = authForm === 'login' ? <Login setAuthForm={setAuthForm}/> : authForm === 'register' ? <Register setAuthForm={setAuthForm}/> : ''; 
 
   // guest navigation popup
   const guest_popup = (

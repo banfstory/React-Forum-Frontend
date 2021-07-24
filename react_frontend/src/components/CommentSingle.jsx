@@ -97,7 +97,7 @@ function CommentSingle(props) {
     replys_result();
   }, []);
 
-  const auth_dot_popup = token && comment.user.id == user.id ? (
+  const auth_dot_popup = token && comment.user.id === user.id ? (
     <React.Fragment>
       <div onClick={show_update_comment} className="flex"> <i className="far fa-edit"> </i> <span> Update </span> </div>
       <div onClick={ () => { delete_comment(comment); popupDispatch('hide'); }} className="flex"> <i className="fas fa-trash-alt"> </i> <span> Delete </span> </div>

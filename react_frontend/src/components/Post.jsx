@@ -116,9 +116,9 @@ function Post(props) {
 
   // determine which item should popup when the vertical dots is clicked
   function processPopup(refsPopup, popupState) {
-    const [comp_dotRef, comp_popupRef] = refsPopup;
-    const {comp_popup, comp_setPopup} = popupState;
-    if(componentRefs.length == 0) {
+    const [comp_dotRef] = refsPopup;
+    const {comp_setPopup} = popupState;
+    if(componentRefs.length === 0) {
       comp_setPopup('show');
       setComponentRefs(refsPopup);
       setComponentState(popupState);
@@ -139,7 +139,7 @@ function Post(props) {
   const toggleDotPopup = (e) => {
     if(componentRefs.length != 0){
       const [comp_dotRef, comp_popupRef] = componentRefs;
-      const {comp_popup, comp_setPopup} = componentState;
+      const {comp_setPopup} = componentState;
       // if you click on the active component's vertical dot functionality or the popup box then skip this
       if(!((comp_dotRef.current && comp_dotRef.current.contains(e.target)) || (comp_popupRef.current && comp_popupRef.current.contains(e.target)))) {
         comp_setPopup('hide');
@@ -175,7 +175,7 @@ function Post(props) {
     const forumIsFollowed = !token ?  '' : IsFollowed ? <button onClick={unfollow_forum} onMouseOver={() => setLeave('LEAVE')} onMouseOut={() => setLeave('JOINED')}> {leave} </button> : <button onClick={follow_forum}> JOIN </button>;
 
 		const pagination = details.paginate.map((page, index) => {
-      const pageActive = page == details.page ? 'page-active' : '';
+      const pageActive = page === details.page ? 'page-active' : '';
 			return (		
 				page ? <Link className={pageActive} to={`?page=${page}`} key={index}>{page}</Link> : <span key={index}> ... </span>
 			)

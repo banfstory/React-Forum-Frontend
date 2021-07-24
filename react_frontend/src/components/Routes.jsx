@@ -2,8 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Account from './Account';
-import Login from './Login';
-import Register from './Register';
 import ChangePassword from './ChangePassword';
 import UserPosts from './UserPosts';
 import Forum from './Forum';

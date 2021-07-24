@@ -23,29 +23,6 @@ function Layout() {
   const passPropHeader = { popupDispatch: popupDispatch, profileRef: profileRef };
   const layout = token && !IsLoadingLog ? <UserLayout/> : <GuestLayout/>;
 
-  /*
-  function onFocus(val) {
-    if(val.length > 0) {
-      popupAutoDispatch('show');
-    } 
-  }
-
-  // show potential search results for each keystroke
-  function auto_complete(val) {
-    popupAutoDispatch('hide');
-    setSearch(val);
-    if(val.trim().length == 0) {
-      return;
-    }
-    axios.get(`${REST_API_URL}autocomplete?query=${val}`).then(response => {
-      setForums(response.data.forums);
-    }).finally(() => {
-      if(val.length > 0) {
-        popupAutoDispatch('show');
-      }
-    });
-  }
-*/
   const contentDetails = (
     <FlashContext.Provider value={ passFlashContext }>
       <LayoutContext.Provider value={ passContext }>

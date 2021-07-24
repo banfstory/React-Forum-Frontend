@@ -47,7 +47,7 @@ function CreatePost(props) {
     let title = input.title.trim();
     let content = input.content.trim();
     let validation_error = false;
-    if(title.length == 0) {
+    if(title.length === 0) {
       setErrors(prev => ({...prev, title_empty: true}));
       validation_error = true;
     } else if(title.length > 5000) {

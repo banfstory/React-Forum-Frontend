@@ -90,7 +90,7 @@ function Home(props) {
       });
   
       const pagination = details.paginate.map((page, index) => {
-        const pageActive = page == details.page ? 'page-active' : '';
+        const pageActive = page === details.page ? 'page-active' : '';
         return (		
           page ? <Link className={pageActive} to={`?page=${page}`} key={index}>{page}</Link> : <span key={index}> ... </span>
         )
@@ -105,7 +105,7 @@ function Home(props) {
   
       const forumIsFollowed = !token ?  '' : IsFollowed ? <button onClick={unfollow_forum} onMouseOver={() => setLeave('LEAVE')} onMouseOut={() => setLeave('JOINED')}> {leave} </button> : <button onClick={follow_forum}> JOIN </button>;
   
-      const update_forum = token && user.id == forum.user.id ? <Link to={`/update-forum/${forum.name}`}> UPDATE </Link> : '';
+      const update_forum = token && user.id === forum.user.id ? <Link to={`/update-forum/${forum.name}`}> UPDATE </Link> : '';
   
       return (
       <div id="forum">
