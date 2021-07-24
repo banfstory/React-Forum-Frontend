@@ -52,7 +52,7 @@ function Account() {
 		if(!validation_error) {
 			if(image) {
 				let ext = image.name.split('.').pop(); // the extnesion will be the last period of the filename therefore pop is used
-				if(ext != 'jpg' && ext != 'png') {
+				if(ext !== 'jpg' && ext !== 'png') {
 					setErrors(prev => ({...prev, file_invalid: true}));
 					validation_error = true;
 				} else {
@@ -99,7 +99,7 @@ function Account() {
 
 	const toggle_popup = popup ? popup_form : '';
 
-	const RemoveImage = user.display_picture != defaultImage  ? (
+	const RemoveImage = user.display_picture !== defaultImage  ? (
 		<button className="remove-picture" onClick={ () => setPopup(true)}> Remove Profile Picture </button>
 	) : '';
 

@@ -58,7 +58,7 @@ function ForumUpdate(props) {
       let validation_error = false;
       if(image) {
         let ext = image.name.split('.').pop(); // the extnesion will be the last period of the filename therefore pop is used
-        if(ext != 'jpg' && ext != 'png') {
+        if(ext !== 'jpg' && ext !== 'png') {
           setErrors(prev => ({...prev, file_invalid: true}));
           validation_error = true;
         } else {

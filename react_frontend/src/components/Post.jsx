@@ -137,7 +137,7 @@ function Post(props) {
 
   // determine if the popup should be hidden
   const toggleDotPopup = (e) => {
-    if(componentRefs.length != 0){
+    if(componentRefs.length !== 0){
       const [comp_dotRef, comp_popupRef] = componentRefs;
       const {comp_setPopup} = componentState;
       // if you click on the active component's vertical dot functionality or the popup box then skip this
