@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import GuestNav from './GuestNav';
 
 function GuestLayout() {
