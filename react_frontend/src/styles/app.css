@@ -561,5 +561,8 @@ input:focus, textarea:focus, select:focus {
   .popup-auth-container-g {
     margin: 0 0.5rem;
   }
+  .search-item .search-stats {
+    display: none;
+  }
 }
 /*# sourceMappingURL=app.css.map */
