@@ -4,11 +4,11 @@ The Single Page Application (SPA) website allows users to create their own forum
 
 For this website, it is required that two local servers are running at the same time, one will be used for the Restful Flask API and the other will be used for React frontend.
 
-FLASK RESTFUL API INSTRUCTIONS: To run the Flask API, it needs to run on a local server and it will be running the application from a virtual environment so that all packages will be already pre-installed within the whole folder itself. The flask api is on a seperate repo: https://github.com/banfstory/Flask-REST-API.
+FLASK RESTFUL API INSTRUCTIONS: To run the Flask API, it needs to run on a local server and it will be running the application from a virtual environment so that all packages will be already pre-installed within the whole folder itself. The flask api is on a seperate repo: https://github.com/banfstory/REST-API-FLASK.
 
 To run the virtual environment do the following (instructions for windows OS only), start with going into command prompt:
 
-1. Go and download the flask api repo folder (https://github.com/banfstory/Flask-REST-API)
+1. Go and download the flask api repo folder (https://github.com/banfstory/REST-API-FLASK)
 2. Enter 'venv\Scripts\activate' to activate the virtual environment
 3. Go to the following path: flask_api (folder)
 4. Enter 'python run.py' to run the local server
