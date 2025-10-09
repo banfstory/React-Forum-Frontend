@@ -12,7 +12,7 @@ Built using React for the frontend and a Flask REST API backend, ensuring fast l
 ## 🛠️ Getting Started
 ### 1. Run the Flask Backend
 Start your Flask REST API server in a separate terminal. <br>
-Backend repository: https://github.com/banfstory/REST-API-FLASK
+Backend repository: (https://github.com/banfstory/Flask-Rest-API
 
 ### 2. Run the React Frontend
 For Windows:
