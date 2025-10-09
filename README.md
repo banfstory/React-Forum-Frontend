@@ -7,7 +7,7 @@ Built using React for the frontend and a Flask REST API backend, ensuring fast l
 - Node.js v16.20.2
 > **Note:** Using newer Node versions may cause dependency or build issues.  
 > You can manage Node versions using [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
-- Running instance of the Flask REST API backend: [REST-API-FLASK](https://github.com/banfstory/REST-API-FLASK)
+- Running instance of the Flask REST API backend: [Flask-Rest-API](https://github.com/banfstory/Flask-Rest-API)
 
 ## 🛠️ Getting Started
 ### 1. Run the Flask Backend
@@ -34,7 +34,7 @@ You can leave it as is if your backend runs locally on port 5000, or update it t
 
 ## 📝 About the Backend
 This frontend connects to a RESTful Flask backend, which handles data storage, authentication, and API logic.
-Backend repository: [REST-API-FLASK](https://github.com/banfstory/REST-API-FLASK)
+Backend repository: [Flask-Rest-API](https://github.com/banfstory/Flask-Rest-API)
 
 ## 📜 License
 This project is licensed under the [MIT License](./LICENSE).
