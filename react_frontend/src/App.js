@@ -19,22 +19,11 @@ function App() {
   const [_, setNotification] = useState(false);
   const [notify_message, setNotifyMessage] = useState('default');
 
-  function deleteAllCookies() {
-    let cookies = document.cookie.split(";");
-    let currTime = new Date();
-    currTime.setMonth(currTime.getMonth() - 1);
-    for(let i = 0; i < cookies.length; i++) {
-      let name = cookies[i].split("=")[0];
-      document.cookie = `${name}=; expires=${currTime.toUTCString()}`;
-    }
-  }
-
   function initApp() {
     // if user has a cookie with the web token, then they have already authenticated before
     loadDispatch('loading');
-    if(document.cookie.indexOf('token') != -1) {
-      let arr_token = document.cookie.split(';').map(cookie => cookie.split('='));
-      const token = arr_token[0][1];
+    const token = localStorage.getItem('token');
+    if(token) {
       let user = jwtdecode(token);
       const getUser = axios.get(`${REST_API_URL}user?id=${user.id}`);
       const getFollowers = axios.get(`${REST_API_URL}user_followers`, { headers: { 'x-access-token' : token } });
@@ -45,7 +34,7 @@ function App() {
         setFollower(followersReponse.data.user_followers);
         setToken(token);
       })).catch(() => {
-        deleteAllCookies();
+        localStorage.removeItem('token');
       }).finally(() => {
         loadDispatch('loaded');
       });

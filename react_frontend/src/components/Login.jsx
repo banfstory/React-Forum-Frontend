@@ -32,9 +32,7 @@ function Login(props) {
     } else {
       loadLogDispatch('loading');
       axios.get(`${REST_API_URL}login`, { auth: { username: username, password: password}}).then(response => {
-        let currTime = new Date();
-        currTime.setTime(currTime.getTime() + 86400 * 1000);
-        document.cookie = `token=${response.data.token}; path=/; expires=${currTime.toUTCString()}`;
+        localStorage.setItem('token', response.data.token);
         const token = response.data.token;
         setToken(token);
         const user = jwtdecode(token);

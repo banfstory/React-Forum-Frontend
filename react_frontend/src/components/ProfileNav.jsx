@@ -22,21 +22,10 @@ function UserLayout() {
     setToken('');
     setUser({});
     setFollower({});
-    deleteAllCookies();
+    localStorage.removeItem('token');
     popupDispatch('hide');
     displayFlashMessage('Logged Out', setFlash, setFlashContent);
     history.push('/');
-  }
-
-  // remove all existing cookies
-  function deleteAllCookies() {
-    let cookies = document.cookie.split(";");
-    let currTime = new Date();
-    currTime.setMonth(currTime.getMonth() - 1);
-    for(let i = 0; i < cookies.length; i++) {
-      let name = cookies[i].split("=")[0];
-      document.cookie = `${name}=; expires=${currTime.toUTCString()}`;
-    }
   }
 
   // close the profile navigation
